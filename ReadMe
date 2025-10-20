@@ -1,0 +1,100 @@
+Donation Tracker System
+
+This is a full-stack donation tracking application built with a .NET 8 Web API backend using SQLite and a React frontend. The backend is designed for easy integration swapping using Dependency Injection.
+
+Deliverables Summary
+
+Backend: .NET 8 Web API with two endpoints: POST /donations (Save donation and sync to mock CRM) and GET /donations (Retrieve all donations). Uses EF Core with SQLite.
+
+Frontend: Single-file React application (DonationTracker.jsx) for submission and display.
+
+Integration Simulation: The DonationsController calls an abstract ICRMService. The current implementation (MockCRMService) logs the donation and simulates a success/failure based on the amount (> $100 for success).
+
+Containerization: A Dockerfile is provided for easy deployment.
+
+🚀 How to Run the Project
+
+Prerequisites
+
+.NET 8 SDK
+
+Docker and Docker Compose (recommended for easy setup)
+
+1. Backend Setup (Local)
+
+Database Migration (Initial Run):
+
+Create a simple appsettings.json in the same directory as Program.cs for the connection string (though the code provides a fallback).
+
+Run the application using dotnet run. The Program.cs startup logic will automatically apply the EF Core migrations and create the DonationTracker.db file.
+
+Run the API:
+
+dotnet run
+
+
+The API will typically run on http://localhost:5000 or http://localhost:5001.
+
+2. Backend Setup (Docker)
+
+Build the Image:
+
+docker build -t donation-tracker-api .
+
+
+Run the Container:
+
+docker run -d -p 5000:80 --name donation-api donation-tracker-api
+
+
+The API is now available at http://localhost:5000.
+
+3. Frontend Setup
+
+The React file (DonationTracker.jsx) is a single, standalone component. You can run it directly in a React environment. It is configured to talk to the API at http://localhost:5000.
+
+📐 Design Choices
+
+1. Swappable Integrations (The CRM Layer)
+
+Principle: Dependency Inversion Principle (DIP) and Strategy Pattern.
+
+Implementation: An ICRMService interface is defined in ICRMService.cs. The application is configured in Program.cs to inject the concrete implementation (MockCRMService) into the DonationsController.
+
+Benefit: To switch from MockCRMService to a real BlackbaudService or DynamicsService, you only need to:
+
+Create the new service class implementing ICRMService.
+
+Change the single registration line in Program.cs:
+
+// Before: builder.Services.AddScoped<ICRMService, MockCRMService>();
+// After: builder.Services.AddScoped<ICRMService, BlackbaudService>(); 
+
+
+The DonationsController remains completely unaware of the underlying CRM technology.
+
+2. Data Access Layer
+
+Principle: Repository Pattern.
+
+Implementation: IDonationRepository abstracts the data storage logic. DonationRepository implements it using EF Core/SQLite.
+
+Benefit: This makes the application logic in the DonationsController database-agnostic. If we decided to switch from SQLite to PostgreSQL, we would only update DonationRepository.cs and the connection string, leaving the controller untouched.
+
+3. API Design
+
+Model/DTO Separation: Used Donation for the database entity and NewDonationDto for the incoming POST request. This prevents "over-posting" security risks and keeps the internal data model flexible.
+
+Async/Await: All repository and service methods are asynchronous (Task<T>) to ensure non-blocking I/O operations, which is crucial for scalable web APIs.
+
+⏭️ Next Steps (If given more time)
+
+Robust CRM Integration: Implement a queueing system (e.g., using RabbitMQ or Azure Service Bus) for the CRM sync. Instead of calling the CRM API synchronously in the controller, the controller would publish a DonationCreated message to the queue. A dedicated Worker Service would process this message and handle the external API call, adding retry logic and robust error logging.
+
+Authentication/Authorization: Secure the API endpoints ([Authorize] attributes) and implement token-based authentication (JWT).
+
+Frontend Polish: Implement form validation, better loading states, and use a dedicated state management library (like Redux or Zustand) for larger applications.
+
+Full Container Orchestration: Create a docker-compose.yml to spin up the .NET API, a dedicated database (e.g., PostgreSQL or SQL Server for production), and the React frontend simultaneously for a complete development environment.
+
+Logging & Telemetry: Integrate structured logging (e.g., Serilog) and application performance monitoring (APM) tools (e.g., Application Insights) for production-grade monitoring.

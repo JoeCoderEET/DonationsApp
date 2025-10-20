@@ -1,0 +1,299 @@
+/* --- VARIABLES --- */
+:root {
+    --primary-color: #0ea5e9; /* sky-600 */
+    --primary-hover: #0284c7; /* sky-700 */
+    --background-color: #e6ecf3; /* gray-100 */
+    --card-background: #e9e9f6;
+    --text-dark: #749ace; /* gray-900 */
+    --text-medium: #6b7280; /* gray-500 */
+    --success-color: #10b981; /* green-500 */
+    --error-color: #ef4444; /* red-500 */
+}
+
+/* --- MAIN LAYOUT --- */
+.app-container {
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    max-width: 900px; /* max-w-4xl */
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 2.5rem; /* mb-10 */
+}
+
+.app-title {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 800; /* font-extrabold */
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.app-subtitle {
+    font-size: 1.125rem; /* text-lg */
+    color: var(--text-medium);
+}
+
+.app-footer {
+    margin-top: 3rem; /* mt-12 */
+    text-align: center;
+    font-size: 0.875rem; /* text-sm */
+    color: var(--text-medium);
+}
+
+/* --- FORM STYLING --- */
+.donation-form-card {
+    padding: 1.5rem;
+    background-color: var(--card-background);
+    box-shadow: 0 10px 15px -3px rgba(91, 115, 209, 0.522), 0 4px 6px -2px rgba(126, 139, 227, 0.05); /* shadow-xl */
+    border-radius: 0.75rem; /* rounded-xl */
+}
+
+.form-title {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
+    color: var(--text-dark);
+    margin-bottom: 1.5rem; /* mb-6 */
+    display: flex;
+    align-items: center;
+}
+
+.form-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    color: var(--success-color); /* green-600 */
+}
+
+.form-group {
+    margin-bottom: 1rem; /* space-y-4 equivalent */
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500;
+    color: var(--text-medium);
+    margin-bottom: 0.25rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #d1d5db; /* gray-300 */
+    border-radius: 0.5rem; /* rounded-lg */
+    background-color: #e0e7ed; /* light blue-grey */
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.5); /* ring-sky-500 */
+}
+
+.submit-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem; /* py-3 */
+    border: 1px solid transparent;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(198, 206, 238, 0.05); /* shadow-sm */
+    color: var(--card-background);
+    background-color: var(--primary-color);
+    transition: background-color 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+.submit-button:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+}
+
+.submit-button:disabled {
+    background-color: #7dd3fc; /* sky-400 */
+    cursor: not-allowed;
+}
+
+.button-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.5rem;
+}
+
+/* --- TABLE STYLING --- */
+.donation-table-card {
+    margin-top: 2rem; /* mt-8 */
+    background-color: var(--card-background);
+    box-shadow: 0 10px 15px -3px rgba(177, 185, 240, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 0.75rem;
+    overflow-x: auto;
+}
+
+.table-header-section {
+    padding: 1.5rem;
+    border-bottom: 1px solid #f3f4f6;
+    display: flex;
+    align-items: center;
+}
+
+.table-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-right: 0.5rem;
+}
+
+.table-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+.table-container {
+    min-width: 600px; /* Ensure table is readable on small screens */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-head {
+    background-color: #f9fafb; /* gray-50 */
+    border-bottom: 1px solid #e5e7eb; /* gray-200 */
+}
+
+.table-head th {
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    font-size: 0.75rem; /* text-xs */
+    font-weight: 500;
+    color: var(--text-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.table-body tr {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.1s;
+}
+
+.table-body tr:hover {
+    background-color: #f9fafb;
+}
+
+.table-body td {
+    padding: 1rem 1.5rem;
+    font-size: 0.875rem; /* text-sm */
+    color: var(--text-medium);
+    white-space: nowrap;
+}
+
+.donor-name {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* CRM Status Pill */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px; /* rounded-full */
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.status-pill.synced {
+    background-color: #d1fae5; /* green-100 */
+    color: #86abd2; /* green-800 */
+}
+
+.status-pill.failed {
+    background-color: #fee2e2; /* red-100 */
+    color: #991b1b; /* red-800 */
+}
+
+.status-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.25rem;
+}
+
+.crm-response {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- MESSAGE COMPONENTS --- */
+.alert-container {
+    border: 1px solid;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-success {
+    background-color: #d1fae5; /* green-100 */
+    border-color: #34d399; /* green-400 */
+    color: #065f46; /* green-700 */
+}
+
+.alert-error {
+    background-color: #fee2e2; /* red-100 */
+    border-color: #f87171; /* red-400 */
+    color: #991b1b; /* red-700 */
+}
+
+.alert-info {
+    background-color: #e0f2fe; /* sky-100 */
+    border-color: #38bdf8; /* sky-400 */
+    color: #0369a1; /* sky-700 */
+}
+
+.alert-close-btn {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+    cursor: pointer;
+}
+
+.alert-close-btn:hover {
+    opacity: 1;
+}
+
+.loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+/* --- RESPONSIVENESS (Mobile First) --- */
+
+@media (max-width: 640px) {
+    .app-title {
+        font-size: 1.75rem; /* sm:text-3xl */
+    }
+
+    .donation-table-card {
+        border-radius: 0.5rem;
+    }
+
+    /* Adjust padding for smaller screens */
+    .table-head th, .table-body td {
+        padding: 0.75rem 1rem;
+    }
+}
