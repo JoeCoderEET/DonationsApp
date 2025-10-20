@@ -3583,11 +3583,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GCF\\my_net_assessment\\DonationTracker\\DonationTracker.Api\\DonationTracker.Api.csproj",
+      "projectUniqueName": "C:\\GCF\\DonationsApp\\DonationTracker\\DonationTracker.Api\\DonationTracker.Api.csproj",
       "projectName": "DonationTracker.Api",
-      "projectPath": "C:\\GCF\\my_net_assessment\\DonationTracker\\DonationTracker.Api\\DonationTracker.Api.csproj",
+      "projectPath": "C:\\GCF\\DonationsApp\\DonationTracker\\DonationTracker.Api\\DonationTracker.Api.csproj",
       "packagesPath": "C:\\Users\\jpolg\\.nuget\\packages\\",
-      "outputPath": "C:\\GCF\\my_net_assessment\\DonationTracker\\DonationTracker.Api\\obj\\",
+      "outputPath": "C:\\GCF\\DonationsApp\\DonationTracker\\DonationTracker.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jpolg\\AppData\\Roaming\\NuGet\\NuGet.Config"
