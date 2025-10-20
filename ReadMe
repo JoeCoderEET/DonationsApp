@@ -4,9 +4,9 @@ This is a full-stack donation tracking application built with a .NET 8 Web API b
 
 Deliverables Summary
 
-Backend: .NET 8 Web API with two endpoints: POST /donations (Save donation and sync to mock CRM) and GET /donations (Retrieve all donations). Uses EF Core with SQLite.
+Backend: .NET 9 Web API with two endpoints: POST /donations (Save donation and sync to mock CRM) and GET /donations (Retrieve all donations). Uses EF Core with SQLite. 
 
-Frontend: Single-file React application (DonationTracker.jsx) for submission and display.
+Frontend: Single-file React application (App.jsx) for submission and display.
 
 Integration Simulation: The DonationsController calls an abstract ICRMService. The current implementation (MockCRMService) logs the donation and simulates a success/failure based on the amount (> $100 for success).
 
